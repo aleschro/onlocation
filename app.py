@@ -6,7 +6,9 @@ from datetime import datetime, timezone
 
 import requests
 from dotenv import load_dotenv
-from flask import Flask, render_template
+from pathlib import Path
+
+from flask import Flask, render_template, send_from_directory
 
 load_dotenv()
 
@@ -106,6 +108,8 @@ def _start_poller():
 # ---------------------------------------------------------------------------
 # Flask app
 # ---------------------------------------------------------------------------
+FONTS_DIR = Path(__file__).resolve().parent / "fonts"
+
 app = Flask(__name__)
 
 # Start the poller once, avoiding the double-start that Flask's reloader causes
@@ -123,3 +127,8 @@ def index():
 def presence():
     cache = _get_cache()
     return render_template("_presence.html", **cache)
+
+
+@app.route("/fonts/<path:filename>")
+def fonts(filename):
+    return send_from_directory(FONTS_DIR, filename)

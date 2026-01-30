@@ -6,14 +6,43 @@
   <title>Presence Dashboard</title>
   <script src="https://unpkg.com/htmx.org@2.0.4"></script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @font-face {
+      font-family: 'Cronos Pro';
+      src: url('/fonts/Cronos-Pro-Light_12448.ttf') format('truetype');
+      font-weight: 300;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Cronos Pro';
+      src: url('/fonts/Cronos-Pro_12459.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Cronos Pro';
+      src: url('/fonts/Cronos-Pro-Semibold_12456.ttf') format('truetype');
+      font-weight: 600;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Cronos Pro';
+      src: url('/fonts/Cronos-Pro-Bold_12435.ttf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+    }
+    body {
+      font-family: 'Cronos Pro', sans-serif;
+    }
+  </style>
 </head>
-<body class="bg-gray-900 text-gray-100 min-h-screen p-6">
+<body class="bg-white text-black min-h-screen p-6">
 
   <div id="presence"
        hx-get="/presence"
        hx-trigger="every 10s"
        hx-swap="innerHTML"
-       class="w-full max-w-screen-xl mx-auto">
+       class="w-full max-w-screen-2xl mx-auto">
     {% include "_presence.html" %}
   </div>
 
